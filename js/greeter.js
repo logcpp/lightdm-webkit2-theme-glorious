@@ -7,6 +7,7 @@ class GreeterScreen {
 		this._screenGreeterVisible = true;
 		this._buttonGreeterClickEvent();
 		this._arrowIndicatorClickEvent();
+		this._screenGreeterKeyDownEvent();
 	}
 
 	getGreeterVisibility() {
@@ -27,6 +28,18 @@ class GreeterScreen {
 			'click',
 			() => {
 				this._hideGreeter();
+			}
+		);
+	}
+
+	_screenGreeterKeyDownEvent() {
+		document.addEventListener(
+			'keydown',
+			e => {
+				if (this._screenGreeterVisible) {
+					e.preventDefault();
+					this._hideGreeter();
+				}
 			}
 		);
 	}
